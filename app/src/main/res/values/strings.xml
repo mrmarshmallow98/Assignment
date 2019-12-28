@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">FITNESS GO</string>
+    <string name="tab1">BEGINNER</string>
+    <string name="tab2">INTERMEDIATE</string>
+    <string name="tab3">ADVANCED</string>
+</resources>
