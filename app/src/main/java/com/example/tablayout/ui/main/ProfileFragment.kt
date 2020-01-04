@@ -1,5 +1,6 @@
 package com.example.tablayout.ui.main
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,11 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
+import com.example.tablayout.LoginActivity
 
 import com.example.tablayout.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.profile_fragment.*
 import org.w3c.dom.Text
 
 
@@ -57,9 +61,6 @@ class ProfileFragment : Fragment() {
         tvUsername = root.findViewById(R.id.tv_username) as TextView
         tvEmail = root.findViewById(R.id.tv_email) as TextView
         tvEmailVerified = root.findViewById(R.id.tv_email_verified) as TextView
-
-        initialise()
-
         return root    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -68,13 +69,6 @@ class ProfileFragment : Fragment() {
         // TODO: Use the ViewModel
     }
 
-
-    private fun initialise() {
-
-
-
-
-    }
 
     override fun onStart() {
         super.onStart()
@@ -88,6 +82,12 @@ class ProfileFragment : Fragment() {
             }
             override fun onCancelled(databaseError: DatabaseError) {}
         })
+        signOut!!.setOnClickListener {
+
+            mAuth!!.signOut()
+            startActivity(Intent(activity,LoginActivity::class.java))
+            Toast.makeText(activity,"Sign Out Successfully",Toast.LENGTH_SHORT).show()
+        }
     }
 
     companion object {

@@ -86,7 +86,7 @@ class CreateAccountActivity : AppCompatActivity() {
                         val currentUserDb = mDatabaseReference!!.child(userId)
                         currentUserDb.child("name").setValue(name)
                         updateUserInfoAndUI()
-
+                        Toast.makeText(this,"Successfully Registered!!",Toast.LENGTH_SHORT).show()
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "createUserWithEmail:failure", task.exception)
@@ -105,7 +105,7 @@ class CreateAccountActivity : AppCompatActivity() {
 
     private fun updateUserInfoAndUI() {
         //start next activity
-        val intent = Intent(this@CreateAccountActivity, MainActivity::class.java)
+        val intent = Intent(this@CreateAccountActivity, LoginActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
