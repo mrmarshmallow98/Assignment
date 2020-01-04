@@ -9,40 +9,48 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.Observer
 
+
 import com.example.tablayout.R
 
-class IntermediateFragment : Fragment() {
 
-    private lateinit var intermediateViewModel: IntermediateViewModel
+
+class WorkoutFragment : Fragment() {
+
+    private lateinit var workoutViewModel: WorkoutViewModel
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-        intermediateViewModel=ViewModelProviders.of(this).get(IntermediateViewModel::class.java).apply {
+        workoutViewModel=ViewModelProviders.of(this).get(WorkoutViewModel::class.java).apply {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER)?:1)
         }
     }
 
 
-    private lateinit var viewModel: IntermediateViewModel
+    private lateinit var viewModel: WorkoutViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.intermediate_fragment, container, false)
+        val root = inflater.inflate(R.layout.workout_fragment, container, false)
         val textView: TextView = root.findViewById(R.id.section_label)
-        intermediateViewModel.text.observe(this, Observer<String> {
+
+        workoutViewModel.text.observe(this, Observer<String> {
             textView.text = it
+
         })
         return root    }
 
+
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(IntermediateViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(WorkoutViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
-    companion object {
+
+        companion object {
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -53,9 +61,11 @@ class IntermediateFragment : Fragment() {
          * Returns a new instance of this fragment for the given section
          * number.
          */
+
+
         @JvmStatic
-        fun newInstance(sectionNumber: Int): IntermediateFragment {
-            return IntermediateFragment().apply {
+        fun newInstance(sectionNumber: Int): WorkoutFragment {
+            return WorkoutFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                 }
@@ -64,3 +74,9 @@ class IntermediateFragment : Fragment() {
     }
 
 }
+
+
+
+
+
+

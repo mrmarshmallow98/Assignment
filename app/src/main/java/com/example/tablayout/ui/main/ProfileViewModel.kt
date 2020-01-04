@@ -5,11 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 
-class BeginnerViewModel : ViewModel() {
-
+class ProfileViewModel : ViewModel() {
     private val _index = MutableLiveData<Int>()
     val text: LiveData<String> = Transformations.map(_index) {
-        "Hello world from section: Beginner"
+        "Hello world from section: Advanced"
     }
 
     fun setIndex(index: Int) {

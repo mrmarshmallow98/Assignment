@@ -11,34 +11,34 @@ import androidx.lifecycle.Observer
 
 import com.example.tablayout.R
 
-class BeginnerFragment : Fragment() {
+class StandingsFragment : Fragment() {
 
-    private lateinit var beginnerViewModel: BeginnerViewModel
+    private lateinit var standingsViewModel: StandingsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-        beginnerViewModel=ViewModelProviders.of(this).get(BeginnerViewModel::class.java).apply {
+        standingsViewModel=ViewModelProviders.of(this).get(StandingsViewModel::class.java).apply {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER)?:1)
         }
     }
 
 
-    private lateinit var viewModel: BeginnerViewModel
+    private lateinit var viewModel: StandingsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.beginner_fragment, container, false)
+        val root = inflater.inflate(R.layout.standings_fragment, container, false)
         val textView: TextView = root.findViewById(R.id.section_label)
-        beginnerViewModel.text.observe(this, Observer<String> {
+        standingsViewModel.text.observe(this, Observer<String> {
             textView.text = it
         })
         return root    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(BeginnerViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(StandingsViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
@@ -54,8 +54,8 @@ class BeginnerFragment : Fragment() {
          * number.
          */
         @JvmStatic
-        fun newInstance(sectionNumber: Int): BeginnerFragment {
-            return BeginnerFragment().apply {
+        fun newInstance(sectionNumber: Int): StandingsFragment {
+            return StandingsFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                 }
@@ -64,9 +64,3 @@ class BeginnerFragment : Fragment() {
     }
 
 }
-
-
-
-
-
-
