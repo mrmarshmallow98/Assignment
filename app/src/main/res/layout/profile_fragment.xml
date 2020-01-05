@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    tools:context=".ui.main.ProfileFragment"
+    tools:context=".ui.main.Profile.ProfileFragment"
     android:background="#78909c">
 
     <ImageButton

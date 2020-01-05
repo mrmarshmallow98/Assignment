@@ -1,4 +1,4 @@
-package com.example.tablayout.ui.main
+package com.example.tablayout.ui.main.Standings
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle

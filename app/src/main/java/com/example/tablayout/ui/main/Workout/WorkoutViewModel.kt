@@ -1,4 +1,4 @@
-package com.example.tablayout.ui.main
+package com.example.tablayout.ui.main.Workout
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

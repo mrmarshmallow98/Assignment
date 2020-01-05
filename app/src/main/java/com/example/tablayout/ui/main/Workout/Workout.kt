@@ -1,4 +1,4 @@
-package com.example.tablayout.ui.main
+package com.example.tablayout.ui.main.Workout
 
 data class Workout(
 

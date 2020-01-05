@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
-import com.example.tablayout.ui.main.ProfileFragment
+import com.example.tablayout.ui.main.Profile.ProfileFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_update.editProfile
@@ -32,7 +32,8 @@ class UpdateActivity : AppCompatActivity() {
         editProfile.setOnClickListener {
 
             updateData()
-            startActivity(Intent(this,ProfileFragment::class.java))
+            startActivity(Intent(this,
+                ProfileFragment::class.java))
            // Toast.makeText(this,"Update Successfully", Toast.LENGTH_SHORT).show()
         }
 

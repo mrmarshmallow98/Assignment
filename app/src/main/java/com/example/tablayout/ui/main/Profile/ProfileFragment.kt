@@ -1,4 +1,4 @@
-package com.example.tablayout.ui.main
+package com.example.tablayout.ui.main.Profile
 
 import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import com.example.tablayout.LoginActivity
 
 import com.example.tablayout.R
@@ -17,7 +16,6 @@ import com.example.tablayout.UpdateActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.profile_fragment.*
-import org.w3c.dom.Text
 
 
 class ProfileFragment : Fragment() {

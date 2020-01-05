@@ -1,25 +1,21 @@
-package com.example.tablayout.ui.main
+package com.example.tablayout.ui.main.Workout
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.tablayout.R
+import com.example.tablayout.WorkoutContent
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_layout.view.*
-import kotlinx.android.synthetic.main.workout.*
 
 
 class WorkoutFragment : Fragment() {
@@ -65,7 +61,7 @@ class WorkoutFragment : Fragment() {
 
     private fun logRecyclerView(){
 
-        var FirebaseRecyclerAdapter = object : FirebaseRecyclerAdapter<Workout,WorkoutViewHolder>(
+        var FirebaseRecyclerAdapter = object : FirebaseRecyclerAdapter<Workout, WorkoutViewHolder>(
 
             Workout::class.java,
             R.layout.list_layout,
@@ -92,6 +88,21 @@ class WorkoutFragment : Fragment() {
 
     class WorkoutViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
+        init {
+
+            itemView.setOnClickListener {
+
+                val intent = Intent(itemView.context, WorkoutContent::class.java)
+                intent.putExtra("desc",itemView.workoutDesc.text)
+                intent.putExtra("id",itemView.section_id.text)
+                itemView.context.startActivity(intent)
+
+
+
+            }
+
+
+        }
     }
 
 

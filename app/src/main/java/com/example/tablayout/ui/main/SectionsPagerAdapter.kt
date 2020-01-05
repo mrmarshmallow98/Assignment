@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.tablayout.R
+import com.example.tablayout.ui.main.Profile.ProfileFragment
+import com.example.tablayout.ui.main.Standings.StandingsFragment
+import com.example.tablayout.ui.main.Workout.WorkoutFragment
 
 private val TAB_TITLES = arrayOf(
     R.string.tab1,
