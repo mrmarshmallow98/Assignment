@@ -84,7 +84,10 @@ class CreateAccountActivity : AppCompatActivity() {
                         verifyEmail()
                         //update user profile information
                         val currentUserDb = mDatabaseReference!!.child(userId)
+                        currentUserDb.child("userID").setValue(userId)
                         currentUserDb.child("name").setValue(name)
+                        currentUserDb.child("email").setValue(email)
+                        currentUserDb.child("password").setValue(password)
                         updateUserInfoAndUI()
                         Toast.makeText(this,"Successfully Registered!!",Toast.LENGTH_SHORT).show()
                     } else {

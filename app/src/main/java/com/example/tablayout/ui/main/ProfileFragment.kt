@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import com.example.tablayout.LoginActivity
 
 import com.example.tablayout.R
+import com.example.tablayout.UpdateActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.profile_fragment.*
@@ -40,7 +41,6 @@ class ProfileFragment : Fragment() {
     }
 
 
-
     private lateinit var viewModel: ProfileViewModel
 
 
@@ -49,11 +49,7 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.profile_fragment, container, false)
-//        val textView: TextView = root.findViewById(R.id.section_label)
-//
-//        profileViewModel.text.observe(this, Observer<String> {
-//            textView.text = it
-//        })
+
         mDatabase = FirebaseDatabase.getInstance()
         mDatabaseReference = mDatabase!!.reference.child("Users")
         mAuth = FirebaseAuth.getInstance()
@@ -87,6 +83,12 @@ class ProfileFragment : Fragment() {
             mAuth!!.signOut()
             startActivity(Intent(activity,LoginActivity::class.java))
             Toast.makeText(activity,"Sign Out Successfully",Toast.LENGTH_SHORT).show()
+        }
+
+        editProfile!!.setOnClickListener {
+
+            startActivity(Intent(activity,UpdateActivity::class.java))
+
         }
     }
 

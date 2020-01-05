@@ -6,22 +6,34 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.lifecycle.Observer
-
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 import com.example.tablayout.R
-
+import com.firebase.ui.database.FirebaseRecyclerAdapter
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.list_layout.view.*
+import kotlinx.android.synthetic.main.workout.*
 
 
 class WorkoutFragment : Fragment() {
 
     private lateinit var workoutViewModel: WorkoutViewModel
+    lateinit var mRecyclerView: RecyclerView
+    lateinit var mDatabase: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         workoutViewModel=ViewModelProviders.of(this).get(WorkoutViewModel::class.java).apply {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER)?:1)
+
+
         }
     }
 
@@ -33,20 +45,53 @@ class WorkoutFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.workout_fragment, container, false)
-        val textView: TextView = root.findViewById(R.id.section_label)
 
-        workoutViewModel.text.observe(this, Observer<String> {
-            textView.text = it
+        mDatabase = FirebaseDatabase.getInstance().getReference("Workout")
+        mRecyclerView = root.findViewById(R.id.listView)
+        mRecyclerView.setHasFixedSize(true)
+        mRecyclerView.setLayoutManager(LinearLayoutManager(context))
 
-        })
+        logRecyclerView()
+
         return root    }
 
 
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(WorkoutViewModel::class.java)
-        // TODO: Use the ViewModel
+//    override fun onActivityCreated(savedInstanceState: Bundle?) {
+//        super.onActivityCreated(savedInstanceState)
+//        viewModel = ViewModelProviders.of(this).get(WorkoutViewModel::class.java)
+//        // TODO: Use the ViewModel
+//    }
+
+    private fun logRecyclerView(){
+
+        var FirebaseRecyclerAdapter = object : FirebaseRecyclerAdapter<Workout,WorkoutViewHolder>(
+
+            Workout::class.java,
+            R.layout.list_layout,
+            WorkoutViewHolder::class.java,
+            mDatabase
+
+        ){
+            override fun populateViewHolder(viewHolder: WorkoutViewHolder, model: Workout, position: Int) {
+
+                viewHolder.itemView.workoutDesc?.text=model.desc
+                viewHolder.itemView.section_id?.text=model.id
+                viewHolder.itemView.workoutName?.text=model.name
+
+
+            }
+        }
+        mRecyclerView.adapter = FirebaseRecyclerAdapter
+
+    }
+
+
+
+
+
+    class WorkoutViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+
     }
 
 
@@ -74,6 +119,8 @@ class WorkoutFragment : Fragment() {
     }
 
 }
+
+
 
 
 
