@@ -64,48 +64,6 @@
                     android:inputType="textPersonName"/>
 
             </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/email"
-                    android:textColor="#eeeeee"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/up_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp"
-                    android:importantForAutofill="no"
-                    android:inputType="textEmailAddress"/>
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/password"
-                    android:textColor="#eeeeee"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/up_password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp"
-                    android:importantForAutofill="no"
-                    android:inputType="textPassword" />
-            </TableRow>
         </TableLayout>
 
         <Button

@@ -3,10 +3,13 @@ package com.example.tablayout.ui.main.Workout
 import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -23,11 +26,12 @@ class WorkoutFragment : Fragment() {
     private lateinit var workoutViewModel: WorkoutViewModel
     lateinit var mRecyclerView: RecyclerView
     lateinit var mDatabase: DatabaseReference
+    private var mButton:Button? =null
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         workoutViewModel=ViewModelProviders.of(this).get(WorkoutViewModel::class.java).apply {
-            setIndex(arguments?.getInt(ARG_SECTION_NUMBER)?:1)
+            //setIndex(arguments?.getInt(ARG_SECTION_NUMBER)?:1)
 
 
         }
@@ -46,7 +50,7 @@ class WorkoutFragment : Fragment() {
         mRecyclerView = root.findViewById(R.id.listView)
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.setLayoutManager(LinearLayoutManager(context))
-
+        //mButton = root.findViewById(R.id.exerciseItem)
         logRecyclerView()
 
         return root    }
@@ -69,12 +73,10 @@ class WorkoutFragment : Fragment() {
             mDatabase
 
         ){
-            override fun populateViewHolder(viewHolder: WorkoutViewHolder, model: Workout, position: Int) {
+            override fun populateViewHolder(viewHolder: WorkoutViewHolder?, model: Workout?, position: Int) {
 
-                viewHolder.itemView.workoutDesc?.text=model.desc
-                viewHolder.itemView.section_id?.text=model.id
-                viewHolder.itemView.workoutName?.text=model.name
-
+                viewHolder?.itemView?.workoutDesc?.text=model?.desc
+                viewHolder?.itemView?.section_id?.text=model?.id
 
             }
         }
@@ -83,14 +85,12 @@ class WorkoutFragment : Fragment() {
     }
 
 
-
-
-
-    class WorkoutViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class WorkoutViewHolder(itemView: View?): RecyclerView.ViewHolder(itemView!!){
 
         init {
 
-            itemView.setOnClickListener {
+            itemView!!.setOnClickListener {
+
 
                 val intent = Intent(itemView.context, WorkoutContent::class.java)
                 intent.putExtra("desc",itemView.workoutDesc.text)
@@ -106,28 +106,28 @@ class WorkoutFragment : Fragment() {
     }
 
 
-        companion object {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private const val ARG_SECTION_NUMBER = "section_number"
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-
-
-        @JvmStatic
-        fun newInstance(sectionNumber: Int): WorkoutFragment {
-            return WorkoutFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_SECTION_NUMBER, sectionNumber)
-                }
-            }
-        }
-    }
+//        companion object {
+//        /**
+//         * The fragment argument representing the section number for this
+//         * fragment.
+//         */
+//        private const val ARG_SECTION_NUMBER = "section_number"
+//
+//        /**
+//         * Returns a new instance of this fragment for the given section
+//         * number.
+//         */
+//
+//
+//        @JvmStatic
+//        fun newInstance(sectionNumber: Int): WorkoutFragment {
+//            return WorkoutFragment().apply {
+//                arguments = Bundle().apply {
+//                    putInt(ARG_SECTION_NUMBER, sectionNumber)
+//                }
+//            }
+//        }
+//    }
 
 }
 

@@ -53,6 +53,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
             Toast.makeText(this, "Enter Email", Toast.LENGTH_SHORT).show()
         }
     }
+
     private fun updateUI() {
         val intent = Intent(this@ForgotPasswordActivity, LoginActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

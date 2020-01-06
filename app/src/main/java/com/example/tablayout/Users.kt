@@ -4,7 +4,8 @@ import com.google.firebase.database.Exclude
 import com.google.firebase.database.IgnoreExtraProperties
 
 @IgnoreExtraProperties
-data class Users(   val name:String="",
+data class Users(
+
                     val email:String="",
-                    val password:String="",
+                    val name:String="",
                     @Exclude val uid:String="")

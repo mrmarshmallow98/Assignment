@@ -26,5 +26,6 @@
     <string name="saveChanges">SAVE CHANGES</string>
     <string name="workoutName">Workout Name</string>
     <string name="workoutDescription">Workout Description</string>
+    <string name="proceed">Proceed</string>
 
 </resources>
