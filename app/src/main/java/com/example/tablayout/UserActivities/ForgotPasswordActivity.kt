@@ -1,4 +1,4 @@
-package com.example.tablayout
+package com.example.tablayout.UserActivities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.tablayout.R
 import com.google.firebase.auth.FirebaseAuth
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")

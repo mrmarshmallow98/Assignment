@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "900531235152-df7hiupddhhchl4ktt065lam9gpjeo05.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tablayout",
+            "certificate_hash": "f2a069dfadb90bfd7c7002cc112f0e4ade874a11"
+          }
+        },
+        {
           "client_id": "900531235152-qrbrg9pdf9sa57th6nmmhlfl962ocsku.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

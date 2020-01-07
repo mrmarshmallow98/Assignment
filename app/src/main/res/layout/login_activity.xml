@@ -11,7 +11,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".LoginActivity"
+    tools:context=".UserActivities.LoginActivity"
     android:background="#ff8a65">
 
     <ImageView

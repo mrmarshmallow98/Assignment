@@ -4,14 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#78909c">
+    android:background="#fff">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     tools:context=".ui.main.Profile.ProfileFragment"
-    android:background="#78909c">
+        android:padding="5dp"
+    android:background="@drawable/rounded_section">
 
     <ImageButton
         android:id="@+id/ib_profile_pic"
@@ -29,6 +30,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <TableLayout
         android:id="@+id/tableLayout"

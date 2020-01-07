@@ -9,10 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import com.example.tablayout.LoginActivity
+import com.example.tablayout.UserActivities.LoginActivity
 
 import com.example.tablayout.R
-import com.example.tablayout.UpdateActivity
+import com.example.tablayout.UserActivities.UpdateActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.profile_fragment.*
@@ -79,13 +79,15 @@ class ProfileFragment : Fragment() {
         signOut!!.setOnClickListener {
 
             mAuth!!.signOut()
-            startActivity(Intent(activity,LoginActivity::class.java))
+            startActivity(Intent(activity,
+                LoginActivity::class.java))
             Toast.makeText(activity,"Sign Out Successfully",Toast.LENGTH_SHORT).show()
         }
 
         editProfile!!.setOnClickListener {
 
-            startActivity(Intent(activity,UpdateActivity::class.java))
+            startActivity(Intent(activity,
+                UpdateActivity::class.java))
 
         }
     }

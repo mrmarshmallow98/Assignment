@@ -27,5 +27,8 @@
     <string name="workoutName">Workout Name</string>
     <string name="workoutDescription">Workout Description</string>
     <string name="proceed">Proceed</string>
+    <string name="link">Link</string>
+    <string name="fitness">Fitness if for everyone</string>
+    <string name="title_activity_timer">Timer</string>
 
 </resources>

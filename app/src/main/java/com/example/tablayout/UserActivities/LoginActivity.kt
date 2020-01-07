@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.example.tablayout
+package com.example.tablayout.UserActivities
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -13,6 +13,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.tablayout.MainActivity
+import com.example.tablayout.R
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {

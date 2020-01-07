@@ -1,22 +1,21 @@
 @file:Suppress("DEPRECATION")
 
-package com.example.tablayout
+package com.example.tablayout.UserActivities
 
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.text.TextUtils.isEmpty
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.tablayout.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.create_user_activity.*
 
 class CreateAccountActivity : AppCompatActivity() {
 
@@ -37,6 +36,7 @@ class CreateAccountActivity : AppCompatActivity() {
     private var name: String? = null
     private var email: String? = null
     private var password: String? = null
+    private var picture:String?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,11 +57,13 @@ class CreateAccountActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         btnCreateAccount!!.setOnClickListener { createNewAccount() }
         btnSignIn!!.setOnClickListener {
-            startActivity(Intent(this@CreateAccountActivity,LoginActivity::class.java))
+            startActivity(Intent(this@CreateAccountActivity,
+                LoginActivity::class.java))
         }
     }
 
     private fun createNewAccount(){
+
 
         name = etName?.text.toString()
         email = etEmail?.text.toString()
@@ -84,10 +86,8 @@ class CreateAccountActivity : AppCompatActivity() {
                         verifyEmail()
                         //update user profile information
                         val currentUserDb = mDatabaseReference!!.child(userId)
-                        currentUserDb.child("userID").setValue(userId)
                         currentUserDb.child("name").setValue(name)
-                        currentUserDb.child("email").setValue(email)
-                    //    currentUserDb.child("password").setValue(password)
+                        //currentUserDb.child("pictureUrl").setValue(pictureLink)
                         updateUserInfoAndUI()
                         Toast.makeText(this,"Successfully Registered!!",Toast.LENGTH_SHORT).show()
                     } else {
