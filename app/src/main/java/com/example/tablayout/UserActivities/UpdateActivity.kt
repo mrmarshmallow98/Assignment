@@ -22,10 +22,11 @@ class UpdateActivity : AppCompatActivity() {
     private var mDatabase: FirebaseDatabase? = null
     private var mAuth: FirebaseAuth? = null
 
+    //1. declare the type of input field
     private var name: EditText? = null
     private var etPicture: ImageView?=null
 
-
+    //2. declare data type
     private var aName:String?=null
     private var picture:String?=null
     private var email:String?=null
@@ -90,6 +91,7 @@ class UpdateActivity : AppCompatActivity() {
         val mUser = mAuth!!.currentUser
         val mUserReference = mDatabaseReference!!.child(mUser!!.uid)
 
+        //3. reference them together
         aName = up_username.text.toString()
         //picture = etPicture?.toString()
 
@@ -103,6 +105,8 @@ class UpdateActivity : AppCompatActivity() {
                     editProfile.setOnClickListener {
 
                         //update name set here
+                        //if u want to keep the original value need 'mUser' which reference to FirebaseAuth of current user
+                        //if u want to set a value, u need to declare two things above
                         var user = Users(mUser.email.toString(), name!!.text.toString(),picture.toString())
 
                         mUserReference.setValue(user)
