@@ -7,8 +7,8 @@ import com.google.firebase.database.IgnoreExtraProperties
 data class Users(
 
                     val email:String="",
-                    val name:String=""
-                    //val pictureUrl:String=""
+                    val name:String="",
+                    val pictureUrl:String=""
                     )
 
 

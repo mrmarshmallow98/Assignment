@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.example.tablayout.UserActivities.LoginActivity
@@ -15,6 +17,9 @@ import com.example.tablayout.R
 import com.example.tablayout.UserActivities.UpdateActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.create_user_activity.*
+import kotlinx.android.synthetic.main.list_layout.view.*
 import kotlinx.android.synthetic.main.profile_fragment.*
 
 
@@ -29,6 +34,8 @@ class ProfileFragment : Fragment() {
     private var tvUsername: TextView? = null
     private var tvEmail: TextView? = null
     private var tvEmailVerified: TextView? = null
+    private var profPic: ImageView?=null
+    private var profLink:String?=null
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -38,9 +45,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
-
     private lateinit var viewModel: ProfileViewModel
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,6 +60,8 @@ class ProfileFragment : Fragment() {
         tvUsername = root.findViewById(R.id.tv_username) as TextView
         tvEmail = root.findViewById(R.id.tv_email) as TextView
         tvEmailVerified = root.findViewById(R.id.tv_email_verified) as TextView
+        profPic = root.findViewById(R.id.profile_pic) as ImageView
+        Picasso.get().load(profLink.toString()).into(profPic)
         return root    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -73,24 +80,24 @@ class ProfileFragment : Fragment() {
         mUserReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 tvUsername!!.text = snapshot.child("name").value as String
+                profLink = snapshot.child("pictureUrl").value as String
             }
             override fun onCancelled(databaseError: DatabaseError) {}
         })
         signOut!!.setOnClickListener {
 
             mAuth!!.signOut()
-            startActivity(Intent(activity,
-                LoginActivity::class.java))
+            startActivity(Intent(activity, LoginActivity::class.java))
             Toast.makeText(activity,"Sign Out Successfully",Toast.LENGTH_SHORT).show()
         }
 
         editProfile!!.setOnClickListener {
-
-            startActivity(Intent(activity,
-                UpdateActivity::class.java))
+            startActivity(Intent(activity, UpdateActivity::class.java))
 
         }
     }
+
+
 
     companion object {
         /**
