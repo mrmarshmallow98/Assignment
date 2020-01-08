@@ -27,7 +27,6 @@ class StandingsFragment : Fragment(),SensorEventListener {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
 
-
         standingsViewModel=ViewModelProviders.of(this).get(StandingsViewModel::class.java).apply {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER)?:1)
         }
@@ -48,13 +47,13 @@ class StandingsFragment : Fragment(),SensorEventListener {
 
       // sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
+        sensorManager = activity?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
+
 
         return root    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        sensorManager = activity?.getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
         viewModel = ViewModelProviders.of(this).get(StandingsViewModel::class.java)
         // TODO: Use the ViewModel

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -16,6 +17,7 @@ import com.example.tablayout.ui.main.WorkoutContent.WorkoutContent
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_layout.view.*
 
 
@@ -24,7 +26,7 @@ class WorkoutFragment : Fragment() {
     private lateinit var workoutViewModel: WorkoutViewModel
     lateinit var mRecyclerView: RecyclerView
     lateinit var mDatabase: DatabaseReference
-    private var mButton:Button? =null
+    private var iv:ImageView? =null
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -49,6 +51,7 @@ class WorkoutFragment : Fragment() {
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.setLayoutManager(LinearLayoutManager(context))
         //mButton = root.findViewById(R.id.exerciseItem)
+        iv = root.findViewById(R.id.workoutImg)
         logRecyclerView()
 
         return root    }
@@ -75,6 +78,7 @@ class WorkoutFragment : Fragment() {
 
                 viewHolder?.itemView?.workoutDesc?.text=model?.desc
                 viewHolder?.itemView?.section_id?.text=model?.id
+                Picasso.get().load(model?.image).into(viewHolder?.itemView?.workoutImg)
 
             }
         }

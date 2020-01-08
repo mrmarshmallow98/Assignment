@@ -12,9 +12,8 @@
     <string name="signUpRedirect">Already have an account?</string>
     <string name="timer">Timer</string>
     <string name="logout">Log Out</string>
-    <string name="aboutUs">About Us</string>
     <string name="txtEmail">Email</string>
-    <string name="send_password_reset_email">Reset Email with Password</string>
+    <string name="send_password_reset_email">Reset Password with Email</string>
     <string name="fpassword">Forgot password?</string>
     <string name="emailV">Email Verified</string>
     <string name="userProfilePic">Profile Picture</string>
@@ -26,9 +25,9 @@
     <string name="saveChanges">SAVE CHANGES</string>
     <string name="workoutName">Workout Name</string>
     <string name="workoutDescription">Workout Description</string>
-    <string name="proceed">Proceed</string>
-    <string name="link">Link</string>
-    <string name="fitness">Fitness if for everyone</string>
+    <string name="fitness">Fitness is one step away</string>
     <string name="title_activity_timer">Timer</string>
-
+    <string name="link">Link</string>
+    <string name="zero">0</string>
+    <string name="steps">Steps</string>
 </resources>
